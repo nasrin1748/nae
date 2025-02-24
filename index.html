@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>local modules</title>
+    <!-- linking to PyScript assets -->
+     <link rel="stylesheet" href="https://pyscript.net/releases/2023.03.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.03.1/pyscript.js"></script>
+  </head>
+  <body>
+<button id="click-btn"  py-click="handle_click()">Click</button> 
+      <py-config>
+        "packages" = ["pandas",]
+        [[fetch]]
+        files = ["./main.py","./app.py"]
+      </py-config>
+<div id="mydiv"></div>       
+     <py-script>          
+#display(HTML("<h1>list</h1>"))       
+#display(HTML("""
+#<p><input id="input1" size="10"/></p><br>
+#"""))
+#import main         
+#import app
+#def handle_click():
+#from main import click_handler
+#click_handler()
+def handle_click():
+    from main import click_handler
+    click_handler()     
+    #print("you clicked the button") 
+    #display("hello",target='mydiv')
+#display("hello",target='mydiv') 
+         
+#from main import myFunction
+#myFunction()
+#import main         
+      </py-script>
+<!--<py-repl auto-generate="true">
+    import pandas as pd
+    from pyscript import display
+    data = {
+            'Name': ['Alice', 'Bob', 'Charlie'],
+            'Age': [25, 30, 35],
+            'City': ['New York', 'Los Angeles', 'Chicago']}
+    df = pd.DataFrame(data)
+    print(df)
+    # type some code here
+    # press Shift+Enter to execute
+</py-repl>-->        
+  </body>
+</html>
